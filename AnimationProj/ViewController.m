@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "YanhuaViewController.h"
 
 @interface ViewController ()
 @property(nonatomic, strong)UILabel  *label;
@@ -18,8 +19,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self SetupLayer];
+    
+    UIButton *btn = [[UIButton alloc]init];
+    btn.frame = CGRectMake(100, 200, 100, 30);
+    [btn setTitle:@"点我" forState:UIControlStateNormal];
+    [self.view addSubview:btn];
+    [btn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
-
+-(void)clickBtn:(UIButton *)btn{
+    NSLog(@"123");
+    YanhuaViewController *vc = [[YanhuaViewController alloc]init];
+    [self presentViewController:vc animated:YES completion:nil];
+    
+}
 
 - (void)SetupLayer{
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(150, 20, 100, 30)];
@@ -28,7 +41,7 @@
     label.textColor = [UIColor redColor];
     [self.view addSubview:label];
     _label = label;
-    [_label.layer addAnimation:[self rotation:1.0f degree:M_PI_4*2000 direction:1000 repeatCount:MAXFLOAT] forKey:@"scaleAnimation"];
+    [_label.layer addAnimation:[self SetupScaleAnimation] forKey:@"scale"];
 }
 
 

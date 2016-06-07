@@ -11,7 +11,7 @@
 #import "loginViewController.h"
 #import "UIView+Orientation.h"
 #import "GGView.h"
-#import "MYViewController.h"
+#import "YanhuaViewController.h"
 @interface loginViewController ()
 @property (nonatomic,strong)UITextField *nameTextField;
 @property (nonatomic,strong)UITextField *podTextField;
@@ -40,21 +40,29 @@
         UIImageView *image = [[UIImageView alloc]init];
         image.frame = CGRectMake(0, 0, Screen_width,Screen_height);
         //image.frame = self.view.bounds;
-        image.image = [UIImage imageNamed:@"美女.jpg"];
+        image.image = [UIImage imageNamed:@"111.jpg"];
         [self.view addSubview:image];
         [image setLFrame:CGRectMake(0, 0, Screen_width,Screen_height)];
         [image setPFrame:CGRectMake(0, 0, Screen_height,Screen_width)];
         [image release];
     self.nameTextField = [[UITextField alloc]init];
-    self.nameTextField.frame = CGRectMake(20, 40, self.view.bounds.size.width-20, 30);
-    self.nameTextField.placeholder = @"请输入她的名字";
+    self.nameTextField.frame = CGRectMake(20, 40, self.view.bounds.size.width-60, 30);
+    //self.nameTextField.placeholder = @"请输入她的名字";
+    
+    UIColor *color = [UIColor whiteColor];
+    self.nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入她的名字" attributes:@{NSForegroundColorAttributeName: color}];
+    self.nameTextField.textColor = color;
+    
     [self.nameTextField setPFrame:CGRectMake(20, 40, Screen_width-20, 30)];
     [self.nameTextField setLFrame:CGRectMake(20, 40, Screen_width-20, 30)];
     [self.view addSubview:self.nameTextField];
     
     self.podTextField = [[UITextField alloc]init];
     self.podTextField.frame = CGRectMake(20, 80, self.view.bounds.size.width-20, 30);
-    self.podTextField.placeholder = @"请输入她的生日";
+    self.podTextField.textColor = color;
+    
+    //self.podTextField.placeholder = @"请输入她的生日";
+    self.podTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入她的生日" attributes:@{NSForegroundColorAttributeName: color}];
     [self.podTextField setPFrame:CGRectMake(20, 80, Screen_width-20, 30)];
     [self.podTextField setLFrame:CGRectMake(20, 80,  Screen_width-20, 30)];
     [self.view addSubview:self.podTextField];
@@ -71,7 +79,7 @@
     [self.loginButton addTarget:self action:@selector(clickLoginButton:) forControlEvents:UIControlEventTouchUpInside];
     self.resultLabel = [[UILabel alloc]init];
     self.resultLabel.frame = CGRectMake(50, 200, Screen_width-100, 100);
-    self.resultLabel.backgroundColor = [UIColor redColor];
+    //self.resultLabel.backgroundColor = [UIColor redColor];
     [self.resultLabel setPFrame:CGRectMake(100, 200, Screen_width-100, 100)];
     [self.resultLabel setLFrame:CGRectMake(100, 200, Screen_width-100, 100)];
     self.resultLabel.textAlignment = 1;
@@ -104,20 +112,20 @@
     //     return;
     // }
     if (name.length==0 || pwd.length==0) {
-        self.resultLabel.text = @"用户名或密码不能为空";
+        self.resultLabel.text = @"请输入名字和生日";
         return;
     }
     //核心比对
-    if ([name isEqualToString:@"abc"] && [pwd isEqualToString:@"123"]) {
+    if ([name isEqualToString:@"于婷婷"] && [pwd isEqualToString:@"19910807"]) {
         self.resultLabel.text = @"登录成功";
        
-       MYViewController *vc = [[MYViewController alloc]init];
+     YanhuaViewController *vc = [[YanhuaViewController alloc]init];
         [self presentViewController:vc animated:YES completion:nil];
       
         
         
     }else{
-        self.resultLabel.text = @"用户名或密码错误";
+        self.resultLabel.text = @"名字或者生日输入错误";
         
     }
     

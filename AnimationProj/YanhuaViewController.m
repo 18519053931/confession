@@ -16,8 +16,13 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:22.0f/255.0 green:22.0f/255.0 blue:22.0f/255.0 alpha:1.0];
-
+    //self.view.backgroundColor = [UIColor colorWithRed:22.0f/255.0 green:22.0f/255.0 blue:22.0f/255.0 alpha:1.0];
+    UIImageView *imageView = [[UIImageView alloc]init];
+    imageView.frame = self.view.bounds;
+    imageView.image = [UIImage imageNamed:@"110.jpg"];
+    [self.view addSubview:imageView];
+    
+    
     [self SetupEmitter];
 }
 
@@ -30,7 +35,8 @@
             [layer removeFromSuperlayer];
         }
     }
-    [YQAnimationLayer createAnimationLayerWithString:@"某某，我爱你" andRect: CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.width) andView:self.view andFont:[UIFont boldSystemFontOfSize:40] andStrokeColor:[UIColor cyanColor]];
+    [YQAnimationLayer createAnimationLayerWithString:@"二阳永远爱大阳" andRect: CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.width) andView:self.view andFont:[UIFont boldSystemFontOfSize:40] andStrokeColor:[UIColor cyanColor]];
+    [self SetupEmitter];
 }
 
 - (void)snow{
